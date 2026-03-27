@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlickSync</title>
+  <!-- connect css-->
+  <link rel="stylesheet" href="movie.css">
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <h1 class="logo">FlickSync</h1>
+
+    <input 
+      type="text" 
+      id="searchInput" 
+      placeholder="Search movies..."
+      class="search"
+    >
+
+    <button class="profile-btn">profile</button>
+  </nav>
+
+  <!--  STREAK SECTION -->
+  <section class="streak-section">
+    <h2> Your Streaks</h2>
+    <div class="streak-container" id="streakContainer">
+      <!-- Example -->
+      <div class="friend-card">
+        <p>Hana  5</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FRIEND RECOMMENDATIONS -->
+  <section class="recommend-section">
+    <h2>Recommended by Friends</h2>
+    <div class="movie-container" id="friendMovies">
+      <!-- Movies will come here -->
+    </div>
+  </section>
+
+  <!-- MOVIE LIST -->
+  <section class="movies-section">
+    <h2> Movies</h2>
+    <div class="movie-container" id="movieContainer">
+      <!-- Movie cards inserted by JS -->
+    </div>
+  </section>
+
+  <!--  FAVORITES BUTTON -->
+  <section class="favorites-link">
+    <a href="favorite.html"> View Favorites</a>
+  </section>
+
+  <!-- MOVIE DETAILS MODAL -->
+  <div class="modal" id="movieModal">
+    <div class="modal-content">
+      <span class="close-btn" id="closeModal">&times;</span>
+      
+      <img id="modalPoster" src="" alt="Movie Poster">
+      <h2 id="modalTitle"></h2>
+      <p id="modalDesc"></p>
+      <p id="modalRating"></p>
+      <p id="modalDate"></p>
+
+      <button id="favBtn">Add to Favorites</button>
+      <button id="shareBtn"> Share</button>
+    </div>
+  </div>
+     <!-- connect with js -->
+  <script src="MovieApp.js"></script>
+</body>
+</html>
