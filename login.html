@@ -1,24 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Login  System</title>
-  <link rel="stylesheet" href="movie.css">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Login | FlickSync</title>
+ <link rel="stylesheet" href="movie.css">
 </head>
+<body class="auth-page">
+ <main class="auth-layout">
+   <section class="auth-copy">
+     <p class="eyebrow">Welcome Back</p>
+     <h1>Sign in to continue your movie journey.</h1>
+     <p class="hero-text">
+       Access your favorites, track your streaks, and keep up with what your friends are watching.
+     </p>
+   </section>
 
-<body>
-
-  <div class="login-box">
-    <h2>Login</h2>
-
-    <input type="text" id="username" placeholder="Username">
-    <input type="password" id="password" placeholder="Password">
-
-    <button onclick="login()">Login</button>
-
-    <p id="error"></p>
-  </div>
-
-  <script src="MovieApp.js"></script>
+   <section class="login-box">
+     <h2>Login</h2>
+     <label class="sr-only" for="username">Username</label>
+     <input type="text" id="username" placeholder="Username">
+     <label class="sr-only" for="password">Password</label>
+     <input type="password" id="password" placeholder="Password">
+     <button onclick="login()">Login</button>
+     <p id="error"></p>
+     <a href="index.html" class="text-link">Continue as guest</a>
+   </section>
+ </main>
+<script src="MovieApp.js"></script>
 </body>
 </html>

@@ -1,22 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Favorites</title>
-  <link rel="stylesheet" href="movie.css">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Favorites | FlickSync</title>
+ <link rel="stylesheet" href="movie.css">
 </head>
-
 <body>
+ <header class="site-header">
+   <nav class="navbar">
+     <a href="index.html" class="brand" aria-label="FlickSync home">
+       <span class="logo">FlickSync</span>
+     </a>
+     <div class="nav-actions">
+       <a href="index.html" class="nav-link">Back</a>
+       <a href="profile.html" class="profile-btn">Profile</a>
+     </div>
+   </nav>
+ </header>
 
-  <nav class="navbar">
-    <h1>Favorites</h1>
-    <a href="index.html">⬅ Back</a>
-  </nav>
+ <main class="page-shell">
+   <section class="page-intro">
+     <p class="eyebrow">Saved List</p>
+     <h1>Your Favorites</h1>
+     <p class="hero-text">Keep the movies you loved most in one clean collection.</p>
+   </section>
 
-  <div class="movie-container" id="favoritesContainer">
-    <!-- Favorites will appear here -->
-  </div>
+   <section class="content-section">
+     <div class="movie-container" id="favoritesContainer">
+     </div>
+   </section>
+ </main>
 
-  <script src="MovieApp.js"></script>
+ <script src="MovieApp.js"></script>
 </body>
 </html>
