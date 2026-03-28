@@ -1,79 +1,115 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FlickSync</title>
-  <!-- connect css-->
-  <link rel="stylesheet" href="movie.css">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>FlickSync</title>
+ <link rel="stylesheet" href="movie.css">
 </head>
-
 <body>
+ <header class="site-header">
+   <nav class="navbar">
+     <a href="index.html" class="brand" aria-label="FlickSync home">
+       <span class="logo">FlickSync</span>
+     </a>
 
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <h1 class="logo">FlickSync</h1>
+     <div class="nav-search">
+       <label class="sr-only" for="searchInput">Search movies</label>
+       <input
+         type="text"
+         id="searchInput"
+         class="search"
+         placeholder="Search movies, actors, or genres..."
+       >
+     </div>
 
-    <input 
-      type="text" 
-      id="searchInput" 
-      placeholder="Search movies..."
-      class="search"
-    >
+     <div class="nav-actions">
+       <a href="favorite.html" class="nav-link">Favorites</a>
+       <a href="profile.html" class="profile-btn">Profile</a>
+     </div>
+   </nav>
+ </header>
 
-    <a href="profile.html" class="profile-btn">Profile</a>
-<button onclick="logout()" class="profile-btn">Logout</button>
-  </nav>
+ <main class="page-shell">
+   <section class="hero-section">
+     <div class="hero-copy">
+       <p class="eyebrow">Watch together</p>
+       <h1>Discover films your circle will actually love.</h1>
+       <p class="hero-text">
+         Track streaks, compare favorites, and find your next movie night pick in one place.
+       </p>
+     </div>
+     <div class="hero-panel">
+       <div class="hero-stat">
+         <span class="stat-value">24</span>
+         <span class="stat-label">Movies watched</span>
+       </div>
+       <div class="hero-stat">
+         <span class="stat-value">6</span>
+         <span class="stat-label">Active streaks</span>
+       </div>
+       <div class="hero-stat">
+         <span class="stat-value">12</span>
+         <span class="stat-label">Friend picks waiting</span>
+       </div>
+     </div>
+   </section>
 
-  <!--  STREAK SECTION -->
-  <section class="streak-section">
-    <h2> Your Streaks</h2>
-    <div class="streak-container" id="streakContainer">
-      <!-- Example -->
-      <div class="friend-card">
-        <p>Hana  5</p>
-      </div>
-    </div>
-  </section>
+   <section class="content-section streak-section">
+     <div class="section-heading">
+       <p class="eyebrow">Community</p>
+       <h2>Your Streaks</h2>
+     </div>
+     <div class="streak-container" id="streakContainer">
+       <article class="friend-card">
+         <p>Hana 5-day streak</p>
+       </article>
+     </div>
+   </section>
 
-  <!-- FRIEND RECOMMENDATIONS -->
-  <section class="recommend-section">
-    <h2>Recommended by Friends</h2>
-    <div class="movie-container" id="friendMovies">
-      <!-- Movies will come here -->
-    </div>
-  </section>
+   <section class="content-section recommend-section">
+     <div class="section-heading">
+       <p class="eyebrow">Social Picks</p>
+       <h2>Recommended by Friends</h2>
+     </div>
+     <div class="movie-container" id="friendMovies">
+     </div>
+   </section>
 
-  <!-- MOVIE LIST -->
-  <section class="movies-section">
-    <h2> Movies</h2>
-    <div class="movie-container" id="movieContainer">
-      <!-- Movie cards inserted by JS -->
-    </div>
-  </section>
+   <section class="content-section movies-section">
+     <div class="section-heading">
+       <p class="eyebrow">Library</p>
+       <h2>Browse Movies</h2>
+     </div>
+     <div class="movie-container" id="movieContainer">
+     </div>
+   </section>
 
-  <!--  FAVORITES BUTTON -->
-  <section class="favorites-link">
-    <a href="favorite.html"> View Favorites</a>
-  </section>
+   <section class="favorites-link">
+     <a href="favorite.html">View Favorites</a>
+   </section>
+ </main>
 
-  <!-- MOVIE DETAILS MODAL -->
-  <div class="modal" id="movieModal">
-    <div class="modal-content">
-      <span class="close-btn" id="closeModal">&times;</span>
-      
-      <img id="modalPoster" src="" alt="Movie Poster">
-      <h2 id="modalTitle"></h2>
-      <p id="modalDesc"></p>
-      <p id="modalRating"></p>
-      <p id="modalDate"></p>
+ <div class="modal" id="movieModal">
+   <div class="modal-content">
+     <button class="close-btn" id="closeModal" aria-label="Close movie details">&times;</button>
+     <img id="modalPoster" src="" alt="Movie Poster">
+     <div class="modal-body">
+       <h2 id="modalTitle"></h2>
+       <p id="modalDesc"></p>
+       <div class="modal-meta">
+         <p id="modalRating"></p>
+         <p id="modalDate"></p>
+       </div>
+       <div class="modal-actions">
+         <button id="favBtn">Add to Favorites</button>
+         <button id="shareBtn">Share</button>
+       </div>
+     </div>
+   </div>
+ </div>
 
-      <button id="favBtn">Add to Favorites</button>
-      <button id="shareBtn"> Share</button>
-    </div>
-  </div>
-     <!-- connect with js -->
-  <script src="MovieApp.js"></script>
+ <script src="MovieApp.js"></script>
 </body>
 </html>
+
