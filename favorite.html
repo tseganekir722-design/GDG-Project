@@ -1,37 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Favorites | FlickSync</title>
- <link rel="stylesheet" href="movie.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Favorites - FlickSync</title>
+  <link rel="stylesheet" href="Moviegdg.css">
 </head>
 <body>
- <header class="site-header">
-   <nav class="navbar">
-     <a href="index.html" class="brand" aria-label="FlickSync home">
-       <span class="logo">FlickSync</span>
-     </a>
-     <div class="nav-actions">
-       <a href="index.html" class="nav-link">Back</a>
-       <a href="profile.html" class="profile-btn">Profile</a>
-     </div>
-   </nav>
- </header>
 
- <main class="page-shell">
-   <section class="page-intro">
-     <p class="eyebrow">Saved List</p>
-     <h1>Your Favorites</h1>
-     <p class="hero-text">Keep the movies you loved most in one clean collection.</p>
-   </section>
+<header class="site-header">
+  <nav class="navbar">
+    <a href="index.html" class="brand"><span class="logo">FlickSync</span></a>
+    <div class="nav-actions">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="watchlist.html" class="nav-link">Watchlist</a>
+      <a href="profile.html" class="profile-btn">Profile</a>
+      <button id="logoutBtn" class="nav-link" type="button">Logout</button>
+    </div>
+  </nav>
+</header>
 
-   <section class="content-section">
-     <div class="movie-container" id="favoritesContainer">
-     </div>
-   </section>
- </main>
+<main class="page-shell">
+  <section class="page-intro favorites-hero">
+    <div>
+      <p class="eyebrow">Saved Collection</p>
+      <h1>Your Favorites</h1>
+      <p class="hero-text">See exactly what you saved, when you saved it, and which genres define your list.</p>
+    </div>
+    <div class="favorites-summary" id="favoritesSummary">
+      <article class="hero-stat">
+        <span class="stat-value" id="favoritesCount">0</span>
+        <span class="stat-label">Saved titles</span>
+      </article>
+      <article class="hero-stat">
+        <span class="stat-value" id="favoriteTopGenre">None yet</span>
+        <span class="stat-label">Top genre</span>
+      </article>
+      <article class="hero-stat">
+        <span class="stat-value" id="favoriteLatest">-</span>
+        <span class="stat-label">Latest saved</span>
+      </article>
+    </div>
+  </section>
 
- <script src="MovieApp.js"></script>
+  <section class="content-section">
+    <div class="favorites-grid" id="favoritesContainer"></div>
+  </section>
+</main>
+
+<script src="MovieApp.js"></script>
 </body>
 </html>

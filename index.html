@@ -1,115 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>FlickSync</title>
- <link rel="stylesheet" href="movie.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlickSync</title>
+  <link rel="stylesheet" href="Moviegdg.css">
 </head>
 <body>
- <header class="site-header">
-   <nav class="navbar">
-     <a href="index.html" class="brand" aria-label="FlickSync home">
-       <span class="logo">FlickSync</span>
-     </a>
 
-     <div class="nav-search">
-       <label class="sr-only" for="searchInput">Search movies</label>
-       <input
-         type="text"
-         id="searchInput"
-         class="search"
-         placeholder="Search movies, actors, or genres..."
-       >
-     </div>
+<header class="site-header">
+  <nav class="navbar">
+    <a href="index.html" class="brand">
+      <span class="logo">FlickSync</span>
+    </a>
 
-     <div class="nav-actions">
-       <a href="favorite.html" class="nav-link">Favorites</a>
-       <a href="profile.html" class="profile-btn">Profile</a>
-     </div>
-   </nav>
- </header>
+    <div class="nav-search">
+      <input
+        type="text"
+        id="searchInput"
+        class="search"
+        placeholder="Search movies..."
+      >
+    </div>
 
- <main class="page-shell">
-   <section class="hero-section">
-     <div class="hero-copy">
-       <p class="eyebrow">Watch together</p>
-       <h1>Discover films your circle will actually love.</h1>
-       <p class="hero-text">
-         Track streaks, compare favorites, and find your next movie night pick in one place.
-       </p>
-     </div>
-     <div class="hero-panel">
-       <div class="hero-stat">
-         <span class="stat-value">24</span>
-         <span class="stat-label">Movies watched</span>
-       </div>
-       <div class="hero-stat">
-         <span class="stat-value">6</span>
-         <span class="stat-label">Active streaks</span>
-       </div>
-       <div class="hero-stat">
-         <span class="stat-value">12</span>
-         <span class="stat-label">Friend picks waiting</span>
-       </div>
-     </div>
-   </section>
+    <div class="nav-actions">
+      <a href="favorite.html" class="nav-link">Favorites</a>
+      <a href="watchlist.html" class="nav-link">Watchlist</a>
+      <a href="profile.html" class="profile-btn">Profile</a>
+      <button id="logoutBtn" class="nav-link" type="button">Logout</button>
+    </div>
+  </nav>
+</header>
 
-   <section class="content-section streak-section">
-     <div class="section-heading">
-       <p class="eyebrow">Community</p>
-       <h2>Your Streaks</h2>
-     </div>
-     <div class="streak-container" id="streakContainer">
-       <article class="friend-card">
-         <p>Hana 5-day streak</p>
-       </article>
-     </div>
-   </section>
+<main class="page-shell">
+  <section class="hero-section">
+    <div class="hero-copy">
+      <p class="eyebrow">Movie Night Starts Here</p>
+      <h1>Find something worth watching in seconds.</h1>
+      <p class="hero-text">
+        Connect OMDb with your API key, search live movie data, and save the movies you want to come back to.
+      </p>
+      <div class="browse-tags" id="browseTags">
+        <button class="tag-pill active" data-query="">All</button>
+        <button class="tag-pill" data-query="Sci-Fi">Sci-Fi</button>
+        <button class="tag-pill" data-query="Action">Action</button>
+        <button class="tag-pill" data-query="Drama">Drama</button>
+        <button class="tag-pill" data-query="Anime">Anime</button>
+        <button class="tag-pill" data-query="Animation">Animation</button>
+        <button class="tag-pill" data-query="Amharic">Amharic</button>
+      </div>
+    </div>
 
-   <section class="content-section recommend-section">
-     <div class="section-heading">
-       <p class="eyebrow">Social Picks</p>
-       <h2>Recommended by Friends</h2>
-     </div>
-     <div class="movie-container" id="friendMovies">
-     </div>
-   </section>
+    <div class="hero-panel">
+      <div class="hero-stat">
+        <span class="stat-value" id="movieCount">0</span>
+        <span class="stat-label">Movies ready to browse</span>
+      </div>
+      <div class="hero-stat">
+        <span class="stat-value" id="followingCount">0</span>
+        <span class="stat-label">Friends you follow</span>
+      </div>
+      <div class="hero-stat">
+        <span class="stat-value" id="streakCount">1</span>
+        <span class="stat-label">Day viewing streak</span>
+      </div>
+    </div>
+  </section>
 
-   <section class="content-section movies-section">
-     <div class="section-heading">
-       <p class="eyebrow">Library</p>
-       <h2>Browse Movies</h2>
-     </div>
-     <div class="movie-container" id="movieContainer">
-     </div>
-   </section>
+  <section class="content-section">
+    <div class="section-heading">
+      <p class="eyebrow">Browse Collection</p>
+      <h2 id="resultsTitle">Popular movies for tonight</h2>
+      <p class="results-copy" id="resultsCopy">Loading movies by title from OMDb...</p>
+    </div>
+    <div class="movie-container" id="movieContainer"></div>
+  </section>
 
-   <section class="favorites-link">
-     <a href="favorite.html">View Favorites</a>
-   </section>
- </main>
+  <section class="content-section">
+    <div class="section-heading">
+      <p class="eyebrow">Featured Sections</p>
+      <h2>Explore by vibe</h2>
+      <p class="results-copy">These sections load directly from OMDb using curated API searches.</p>
+    </div>
+    <div class="featured-sections" id="featuredSections">
+      <article class="featured-block">
+        <div class="section-heading">
+          <h3>Action Tonight</h3>
+          <p class="results-copy">Fast, intense picks.</p>
+        </div>
+        <div class="featured-row" id="featuredAction"></div>
+      </article>
 
- <div class="modal" id="movieModal">
-   <div class="modal-content">
-     <button class="close-btn" id="closeModal" aria-label="Close movie details">&times;</button>
-     <img id="modalPoster" src="" alt="Movie Poster">
-     <div class="modal-body">
-       <h2 id="modalTitle"></h2>
-       <p id="modalDesc"></p>
-       <div class="modal-meta">
-         <p id="modalRating"></p>
-         <p id="modalDate"></p>
-       </div>
-       <div class="modal-actions">
-         <button id="favBtn">Add to Favorites</button>
-         <button id="shareBtn">Share</button>
-       </div>
-     </div>
-   </div>
- </div>
+      <article class="featured-block">
+        <div class="section-heading">
+          <h3>Drama Picks</h3>
+          <p class="results-copy">Stories with strong emotion.</p>
+        </div>
+        <div class="featured-row" id="featuredDrama"></div>
+      </article>
 
- <script src="MovieApp.js"></script>
+      <article class="featured-block">
+        <div class="section-heading">
+          <h3>Animation</h3>
+          <p class="results-copy">Colorful family and fantasy favorites.</p>
+        </div>
+        <div class="featured-row" id="featuredAnimation"></div>
+      </article>
+
+      <article class="featured-block">
+        <div class="section-heading">
+          <h3>Anime Spotlight</h3>
+          <p class="results-copy">Animated Japanese-inspired searches from OMDb.</p>
+        </div>
+        <div class="featured-row" id="featuredAnime"></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="section-heading">
+      <p class="eyebrow">Your Flow</p>
+      <h2>Recently Viewed</h2>
+      <p class="results-copy">Jump back into the movies you opened most recently.</p>
+    </div>
+    <div class="featured-row" id="recentlyViewed"></div>
+  </section>
+
+  <section class="content-section">
+    <div class="section-heading">
+      <p class="eyebrow">Plan Ahead</p>
+      <h2>Watchlist Preview</h2>
+      <p class="results-copy">Save titles for later and keep them separate from your favorites.</p>
+    </div>
+    <div class="featured-row" id="watchlistPreview"></div>
+  </section>
+
+  <section class="content-section">
+    <div class="section-heading">
+      <p class="eyebrow">Community</p>
+      <h2>Follow System</h2>
+      <p class="results-copy">Follow friends, keep streaks alive, and see what your circle is into.</p>
+    </div>
+    <div class="social-grid">
+      <article class="social-panel">
+        <div class="section-heading">
+          <h3>People to Follow</h3>
+          <p class="results-copy">Build your watch circle.</p>
+        </div>
+        <div class="friend-list" id="friendList"></div>
+      </article>
+
+      <article class="social-panel">
+        <div class="section-heading">
+          <h3>Friend Recommendations</h3>
+          <p class="results-copy">Quick picks recommended by people you follow.</p>
+        </div>
+        <div class="featured-row" id="friendRecommendations"></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="section-heading">
+      <p class="eyebrow">Activity</p>
+      <h2>Activity Feed</h2>
+      <p class="results-copy">A live local feed of follows, favorites, and streak updates.</p>
+    </div>
+    <div class="activity-feed" id="activityFeed"></div>
+  </section>
+
+</main>
+
+<!-- MODAL -->
+<div class="modal" id="movieModal">
+  <div class="modal-content">
+    <button class="close-btn" id="closeModal">&times;</button>
+    <img id="modalPoster">
+    <div class="modal-body">
+      <h2 id="modalTitle"></h2>
+      <p id="modalDesc"></p>
+      <p id="modalRating"></p>
+      <p id="modalDate"></p>
+
+      <div class="modal-actions">
+        <button id="favBtn">Add to Favorites</button>
+        <button id="watchlistBtn" class="nav-link" type="button">Add to Watchlist</button>
+      </div>
+
+      <div class="modal-controls">
+        <label for="statusSelect" class="sr-only">Movie status</label>
+        <select id="statusSelect" class="modal-select">
+          <option value="">Set status</option>
+          <option value="Plan to Watch">Plan to Watch</option>
+          <option value="Watching">Watching</option>
+          <option value="Watched">Watched</option>
+        </select>
+
+        <label for="recommendFriendSelect" class="sr-only">Choose friend</label>
+        <select id="recommendFriendSelect" class="modal-select">
+          <option value="">Choose friend</option>
+        </select>
+        <button id="recommendBtn" class="nav-link" type="button">Send Recommendation</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="poster-lightbox" id="posterLightbox">
+  <button class="close-btn" id="closePosterLightbox">&times;</button>
+  <img id="lightboxPoster" alt="Full movie poster">
+</div>
+
+<script src="MovieApp.js"></script>
 </body>
 </html>
-

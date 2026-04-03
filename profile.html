@@ -1,59 +1,154 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Profile | FlickSync</title>
- <link rel="stylesheet" href="movie.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile - FlickSync</title>
+  <link rel="stylesheet" href="Moviegdg.css">
 </head>
 <body>
- <header class="site-header">
-   <nav class="navbar">
-     <a href="index.html" class="brand" aria-label="FlickSync home">
-       <span class="logo">FlickSync</span>
-     </a>
-     <div class="nav-actions">
-       <a href="index.html" class="nav-link">Home</a>
-       <a href="favorite.html" class="nav-link">Favorites</a>
-     </div>
-   </nav>
- </header>
 
- <main class="page-shell">
-   <section class="page-intro">
-     <p class="eyebrow">Your Space</p>
-     <h1>Profile Overview</h1>
-     <p class="hero-text">A quick view of your activity, favorites, and movie habits.</p>
-   </section>
+<header class="site-header">
+  <nav class="navbar">
+    <a href="index.html" class="brand"><span class="logo">FlickSync</span></a>
+    <div class="nav-actions">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="favorite.html" class="nav-link">Favorites</a>
+      <a href="watchlist.html" class="nav-link">Watchlist</a>
+      <button id="logoutBtn" class="nav-link" type="button">Logout</button>
+    </div>
+  </nav>
+</header>
 
-   <section class="profile-grid">
-     <article class="info-card">
-       <p class="eyebrow">Account</p>
-       <h2>Mesoud</h2>
-       <p class="card-text">Movie lover, social watcher, and streak builder.</p>
-     </article>
+<main class="page-shell">
+  <div class="page-intro">
+    <p class="eyebrow">Profile</p>
+    <h1>Your FlickSync Settings</h1>
+    <p class="hero-text">Manage your local account and the OMDb API key that powers the app.</p>
+  </div>
 
-     <article class="info-card">
-       <p class="eyebrow">Favorites</p>
-       <h2>18 Saved</h2>
-       <p class="card-text">A personal list of top picks ready for rewatch night.</p>
-     </article>
+  <div class="profile-grid">
+    <div class="info-card">
+      <h2>Name</h2>
+      <p id="profileName">Guest User</p>
+    </div>
 
-     <article class="info-card">
-       <p class="eyebrow">Friends</p>
-       <h2>7 Active</h2>
-       <p class="card-text">See who is recommending the best movies this week.</p>
-     </article>
+    <div class="info-card">
+      <h2>Favorites Count</h2>
+      <p id="favCount">0</p>
+    </div>
 
-     <article class="info-card">
-       <p class="eyebrow">Streak</p>
-       <h2>5 Days</h2>
-       <p class="card-text">You are keeping strong momentum with your watch history.</p>
-     </article>
-   </section>
- </main>
+    <div class="info-card">
+      <h2>Watchlist Count</h2>
+      <p id="watchlistCount">0</p>
+    </div>
+
+    <div class="info-card">
+      <h2>Current Streak</h2>
+      <p id="profileStreak">1 day</p>
+    </div>
+
+    <div class="info-card">
+      <h2>Following</h2>
+      <p id="profileFollowingCount">0</p>
+    </div>
+
+    <div class="info-card">
+      <h2>OMDb API Key</h2>
+      <p id="profileApiStatus">Not added</p>
+      <p class="card-text" id="profileApiHint">Add your OMDb key to search live movie data.</p>
+      <div class="profile-actions">
+        <button id="apiKeyBtn" class="profile-btn" type="button">Update API Key</button>
+        <button id="clearApiKeyBtn" class="nav-link" type="button">Clear Key</button>
+      </div>
+    </div>
+  </div>
+
+  <section class="content-section">
+    <div class="section-heading">
+      <p class="eyebrow">Following</p>
+      <h2>People You Follow</h2>
+      <p class="results-copy">See your current circle and the latest movie recommendation sent to each friend.</p>
+    </div>
+    <div class="friend-list" id="profileFollowingList"></div>
+  </section>
+
+  <section class="content-section">
+    <div class="section-heading">
+      <p class="eyebrow">Inbox</p>
+      <h2>Recommendation Inbox</h2>
+      <p class="results-copy">See the latest picks coming from the people you follow.</p>
+    </div>
+    <div class="featured-row" id="recommendationInbox"></div>
+  </section>
+
+  <section class="content-section">
+    <div class="section-heading">
+      <p class="eyebrow">History</p>
+      <h2>Recently Viewed</h2>
+      <p class="results-copy">Your latest opened movies stay here for quick access.</p>
+    </div>
+    <div class="featured-row" id="recentlyViewed"></div>
+  </section>
+
+  <section class="content-section">
+    <div class="section-heading">
+      <p class="eyebrow">Plan Ahead</p>
+      <h2>Your Watchlist</h2>
+      <p class="results-copy">Titles you saved for later without moving them into favorites yet.</p>
+    </div>
+    <div class="featured-row" id="watchlistPreview"></div>
+  </section>
+
+  <section class="content-section">
+    <div class="section-heading">
+      <p class="eyebrow">Social Summary</p>
+      <h2>Your Activity Feed</h2>
+      <p class="results-copy">Recent follows, favorites, and streak milestones.</p>
+    </div>
+    <div class="activity-feed" id="activityFeed"></div>
+  </section>
+</main>
+
+<div class="modal" id="movieModal">
+  <div class="modal-content">
+    <button class="close-btn" id="closeModal">&times;</button>
+    <img id="modalPoster">
+    <div class="modal-body">
+      <h2 id="modalTitle"></h2>
+      <p id="modalDesc"></p>
+      <p id="modalRating"></p>
+      <p id="modalDate"></p>
+
+      <div class="modal-actions">
+        <button id="favBtn">Add to Favorites</button>
+        <button id="watchlistBtn" class="nav-link" type="button">Add to Watchlist</button>
+      </div>
+
+      <div class="modal-controls">
+        <label for="statusSelect" class="sr-only">Movie status</label>
+        <select id="statusSelect" class="modal-select">
+          <option value="">Set status</option>
+          <option value="Plan to Watch">Plan to Watch</option>
+          <option value="Watching">Watching</option>
+          <option value="Watched">Watched</option>
+        </select>
+
+        <label for="recommendFriendSelect" class="sr-only">Choose friend</label>
+        <select id="recommendFriendSelect" class="modal-select">
+          <option value="">Choose friend</option>
+        </select>
+        <button id="recommendBtn" class="nav-link" type="button">Send Recommendation</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="poster-lightbox" id="posterLightbox">
+  <button class="close-btn" id="closePosterLightbox">&times;</button>
+  <img id="lightboxPoster" alt="Full movie poster">
+</div>
+
+<script src="MovieApp.js"></script>
 </body>
 </html>
-
-
