@@ -14,13 +14,16 @@
      </a>
 
      <div class="nav-search">
+      <form id="movie-searcher">
        <label class="sr-only" for="searchInput">Search movies</label>
        <input
          type="text"
          id="searchInput"
          class="search"
-         placeholder="Search movies, actors, or genres..."
+         placeholder= "Search movies, actors, or genres..."
+         autocomplete="on"
        >
+      </form>
      </div>
 
      <div class="nav-actions">
@@ -55,17 +58,19 @@
      </div>
    </section>
 
-   <section class="content-section streak-section">
-     <div class="section-heading">
-       <p class="eyebrow">Community</p>
-       <h2>Your Streaks</h2>
-     </div>
-     <div class="streak-container" id="streakContainer">
-       <article class="friend-card">
-         <p>Hana 5-day streak</p>
-       </article>
-     </div>
-   </section>
+<section class="content-section popular-section">
+  <div class="section-heading">
+    <p class="eyebrow">Trending</p>
+    <h2>Trending Movies</h2>
+  </div>
+   <div class="scroll-wrapper">
+  <button class="scroll-btn left" onclick="scrollMovies('popularMovies', -1)">❮</button>
+  <div class="movie-container" id="popularMovies"></div>
+  <button class="scroll-btn right" onclick="scrollMovies('popularMovies', 1)">❯</button>
+</div>
+</section>
+   
+   
 
    <section class="content-section recommend-section">
      <div class="section-heading">
@@ -76,7 +81,7 @@
      </div>
    </section>
 
-   <section class="content-section movies-section">
+ <section class="content-section movies-section" id="browseSection">
      <div class="section-heading">
        <p class="eyebrow">Library</p>
        <h2>Browse Movies</h2>
@@ -85,9 +90,18 @@
      </div>
    </section>
 
-   <section class="favorites-link">
-     <a href="favorite.html">View Favorites</a>
+ <section class="content-section streak-section">
+     <div class="section-heading">
+       <p class="eyebrow">Community</p>
+       <h2>Your Streaks</h2>
+     </div>
+     <div class="streak-container" id="streakContainer">
+       <article class="friend-card">
+         <p>Hana 5-day streak</p>
+       </article>
+     </div>
    </section>
+  
  </main>
 
  <div class="modal" id="movieModal">
@@ -109,7 +123,17 @@
    </div>
  </div>
 
+
+
+   <section class="favorites-link">
+     <a href="favorite.html">View Favorites</a>
+   </section>
+
+
+
  <script src="MovieApp.js"></script>
 </body>
 </html>
+
+
 
