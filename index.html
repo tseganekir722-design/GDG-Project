@@ -4,30 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FlickSync</title>
-  <link rel="stylesheet" href="Moviegdg.css">
+  <link rel="stylesheet" href="Moviegdg.css?v=2">
 </head>
 <body>
 
-<<<<<<< HEAD
 <header class="site-header">
   <nav class="navbar">
     <a href="index.html" class="brand">
       <span class="logo">FlickSync</span>
     </a>
-=======
-     <div class="nav-search">
-      <form id="movie-searcher">
-       <label class="sr-only" for="searchInput">Search movies</label>
-       <input
-         type="text"
-         id="searchInput"
-         class="search"
-         placeholder= "Search movies, actors, or genres..."
-         autocomplete="on"
-       >
-      </form>
-     </div>
->>>>>>> collab/main
 
     <div class="nav-search">
       <input
@@ -47,7 +32,6 @@
   </nav>
 </header>
 
-<<<<<<< HEAD
 <main class="page-shell">
   <section class="hero-section">
     <div class="hero-copy">
@@ -187,7 +171,6 @@
 
 </main>
 
-<!-- MODAL -->
 <div class="modal" id="movieModal">
   <div class="modal-content">
     <button class="close-btn" id="closeModal">&times;</button>
@@ -227,87 +210,6 @@
   <img id="lightboxPoster" alt="Full movie poster">
 </div>
 
-<script src="MovieApp.js"></script>
+<script src="MovieApp.js?v=2"></script>
 </body>
 </html>
-=======
-<section class="content-section popular-section">
-  <div class="section-heading">
-    <p class="eyebrow">Trending</p>
-    <h2>Trending Movies</h2>
-  </div>
-   <div class="scroll-wrapper">
-  <button class="scroll-btn left" onclick="scrollMovies('popularMovies', -1)">❮</button>
-  <div class="movie-container" id="popularMovies"></div>
-  <button class="scroll-btn right" onclick="scrollMovies('popularMovies', 1)">❯</button>
-</div>
-</section>
-   
-   
-
-   <section class="content-section recommend-section">
-     <div class="section-heading">
-       <p class="eyebrow">Social Picks</p>
-       <h2>Recommended by Friends</h2>
-     </div>
-     <div class="movie-container" id="friendMovies">
-     </div>
-   </section>
-
- <section class="content-section movies-section" id="browseSection">
-     <div class="section-heading">
-       <p class="eyebrow">Library</p>
-       <h2>Browse Movies</h2>
-     </div>
-     <div class="movie-container" id="movieContainer">
-     </div>
-   </section>
-
- <section class="content-section streak-section">
-     <div class="section-heading">
-       <p class="eyebrow">Community</p>
-       <h2>Your Streaks</h2>
-     </div>
-     <div class="streak-container" id="streakContainer">
-       <article class="friend-card">
-         <p>Hana 5-day streak</p>
-       </article>
-     </div>
-   </section>
-  
- </main>
-
- <div class="modal" id="movieModal">
-   <div class="modal-content">
-     <button class="close-btn" id="closeModal" aria-label="Close movie details">&times;</button>
-     <img id="modalPoster" src="" alt="Movie Poster">
-     <div class="modal-body">
-       <h2 id="modalTitle"></h2>
-       <p id="modalDesc"></p>
-       <div class="modal-meta">
-         <p id="modalRating"></p>
-         <p id="modalDate"></p>
-       </div>
-       <div class="modal-actions">
-         <button id="favBtn">Add to Favorites</button>
-         <button id="shareBtn">Share</button>
-       </div>
-     </div>
-   </div>
- </div>
-
-
-
-   <section class="favorites-link">
-     <a href="favorite.html">View Favorites</a>
-   </section>
-
-
-
- <script src="MovieApp.js"></script>
-</body>
-</html>
-
-
-
->>>>>>> collab/main
