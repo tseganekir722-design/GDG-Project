@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Watchlist - FlickSync</title>
+  <link rel="stylesheet" href="Moviegdg.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="navbar">
+    <a href="index.html" class="brand"><span class="logo">FlickSync</span></a>
+    <div class="nav-actions">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="favorite.html" class="nav-link">Favorites</a>
+      <a href="profile.html" class="profile-btn">Profile</a>
+      <button id="logoutBtn" class="nav-link" type="button">Logout</button>
+    </div>
+  </nav>
+</header>
+
+<main class="page-shell">
+  <section class="page-intro favorites-hero">
+    <div>
+      <p class="eyebrow">Saved For Later</p>
+      <h1>Your Watchlist</h1>
+      <p class="hero-text">Keep upcoming picks here, then move the best ones into favorites after you watch them.</p>
+    </div>
+    <div class="favorites-summary">
+      <article class="hero-stat">
+        <span class="stat-value" id="watchlistTotal">0</span>
+        <span class="stat-label">Saved for later</span>
+      </article>
+      <article class="hero-stat">
+        <span class="stat-value" id="watchlistStatus">Plan to Watch</span>
+        <span class="stat-label">Default status</span>
+      </article>
+      <article class="hero-stat">
+        <span class="stat-value" id="watchlistLatest">-</span>
+        <span class="stat-label">Latest saved</span>
+      </article>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="favorites-grid" id="watchlistContainer"></div>
+  </section>
+</main>
+
+<div class="modal" id="movieModal">
+  <div class="modal-content">
+    <button class="close-btn" id="closeModal">&times;</button>
+    <img id="modalPoster">
+    <div class="modal-body">
+      <h2 id="modalTitle"></h2>
+      <p id="modalDesc"></p>
+      <p id="modalRating"></p>
+      <p id="modalDate"></p>
+
+      <div class="modal-actions">
+        <button id="favBtn">Add to Favorites</button>
+        <button id="watchlistBtn" class="nav-link" type="button">Add to Watchlist</button>
+      </div>
+
+      <div class="modal-controls">
+        <label for="statusSelect" class="sr-only">Movie status</label>
+        <select id="statusSelect" class="modal-select">
+          <option value="">Set status</option>
+          <option value="Plan to Watch">Plan to Watch</option>
+          <option value="Watching">Watching</option>
+          <option value="Watched">Watched</option>
+        </select>
+
+        <label for="recommendFriendSelect" class="sr-only">Choose friend</label>
+        <select id="recommendFriendSelect" class="modal-select">
+          <option value="">Choose friend</option>
+        </select>
+        <button id="recommendBtn" class="nav-link" type="button">Send Recommendation</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="poster-lightbox" id="posterLightbox">
+  <button class="close-btn" id="closePosterLightbox">&times;</button>
+  <img id="lightboxPoster" alt="Full movie poster">
+</div>
+
+<script src="MovieApp.js"></script>
+</body>
+</html>
